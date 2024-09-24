@@ -1,56 +1,20 @@
-<!DOCTYPE html>
-<html>  
-<head>
-    <title>Post Tweet</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color:rgb(97, 55, 212);
-        }
-        form {
-            margin-bottom: 20px;
-        }
-        input[type="text"] {
-            width: 300px;
-            height: 30px;
-            font-size: 16px;
-            padding: 5px;
-        }
-        input[type="submit"] {
-            height: 40px;
-            font-size: 16px;
-            padding: 5px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        input[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        li {
-            margin-bottom: 10px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            background-color: #f9f9f9;
-        }
-    </style>
-</head>
-<body>
-    <h1>Post Tweet</h1>
-    <form action="/posttweet/post/" method="post">
-        {% csrf_token %}
-        <input type="text" name="tweet" placeholder="What's happening?">
-        <input type="submit" value="Post">
-    </form>
-    <h2>Tweets</h2>
-    <ul>
-        {% for tweet in tweets %}
-            <li>{{ tweet.tweet }}</li>
-        {% endfor %}
-    </ul>
-</html>
+{% extends 'layout.html' %}
+    
+    {% block title %}
+        Post Tweet
+    {% endblock %}
+    
+    {% block content %}
+        <h1 class="text-center mt-4">Welcome to Tweet Project</h1>
+        <form action="/posttweet/post/" method="post">
+            {% csrf_token %}
+            <input type="text" name="tweet" placeholder="What's happening?">
+            <input type="submit" value="Post">
+        </form>
+        <h2>Tweets</h2>
+        <ul>
+            {% for tweet in tweets %}
+                <li>{{ tweet.tweet }}</li>
+            {% endfor %}
+        </ul>
+    {% endblock %}
