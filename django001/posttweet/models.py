@@ -11,4 +11,4 @@ class Tweet(models.Model):
 
 
     def __str__(self):
-        return f"{self.user.username} tweeted: {self.text[:10]}..."
+        return f"{self.user.username} tweeted: {self.text[:20]}..."
