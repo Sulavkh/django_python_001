@@ -17,10 +17,15 @@ Including another URLconf
 # Define the URL configuration for the posttweet app
 
 from django.urls import path
+from django.contrib import admin
 from . import views
 
 app_name = 'posttweet'
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path("index", views.index, name="index"),
+    path('contact', views.contact, name='contact'),
 ] 
+
+
