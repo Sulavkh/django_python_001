@@ -12,3 +12,13 @@ class Tweet(models.Model):
 
     def __str__(self):
         return f"{self.user.username} tweeted: {self.text[:20]}..."
+    
+class Contact(models.Model):
+    email = models.EmailField(max_length=254)
+    name = models.CharField(max_length=122)
+    phone = models.CharField(max_length=122)
+    desc = models.TextField(max_length=240)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self) -> str:
+        return f"{self.name} Email: {self.email}"
