@@ -21,4 +21,4 @@ class Contact(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self) -> str:
-        return f"{self.name} Email: {self.email}"
+        return f"{self.name} Email: {self.email} created at {self.created_at}"

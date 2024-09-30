@@ -22,8 +22,8 @@ def contact(request):
         email = request.POST.get('email')
         phone = request.POST.get('phone')
         desc = request.POST.get('desc')
-        created_at = models.DateTimeField(auto_now_add=True)
-        contact = Contact(name=name, email=email, phone=phone, desc=desc, created_at = created_at)
+        created_at = models.DateTimeField()
+        contact = Contact(name=name, email=email, phone=phone, desc=desc, created_at=created_at)
         contact.save()
     return render(request, 'contact.html')
 
