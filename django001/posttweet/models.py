@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 # Create your models here.
 class Tweet(models.Model):
@@ -14,11 +15,11 @@ class Tweet(models.Model):
         return f"{self.user.username} tweeted: {self.text[:20]}..."
     
 class Contact(models.Model):
-    email = models.EmailField(max_length=254)
-    name = models.CharField(max_length=122)
-    phone = models.CharField(max_length=122)
-    desc = models.TextField(max_length=240)
-    created_at = models.DateTimeField(auto_now_add=True)
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    phone = models.CharField(max_length=15)
+    desc = models.TextField()
+    created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self) -> str:
         return f"{self.name} Email: {self.email} created at {self.created_at}"
