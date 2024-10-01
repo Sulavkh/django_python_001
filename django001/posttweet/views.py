@@ -14,6 +14,12 @@ from django.db import DatabaseError
 def index(request):
     return render(request, 'index.html')
 
+def login(request):
+    return render(request, 'login.html')
+
+def logout(request):
+    return render(request, 'index.html')
+
 def tweet_list(request):
     Tweet.objects.all().order_by('-created_at')
     
