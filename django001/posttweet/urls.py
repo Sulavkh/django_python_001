@@ -27,6 +27,8 @@ urlpatterns = [
     path("index", views.index, name="index"),
     path('contact', views.contact, name='contact'),
     path('login', views.login, name='login'),
+    path('loggedin', views.loggedin, name='loggedin'),
+    path('logout', views.logoutuser, name='logout'),
 ] 
 
 

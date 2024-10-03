@@ -8,17 +8,35 @@ from .models import Contact
 from django.contrib import messages
 from django.utils import timezone
 from django.db import DatabaseError
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
 
 
 # Create your views here.
 def index(request):
+    if request.user.is_anonymous:
+        return redirect('posttweet:login')
     return render(request, 'index.html')
 
 def login(request):
+    if request.method == "POST":
+        # Check if the user entered an email and password
+        username = request.POST.get('email')
+        password = request.POST.get('password')
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            return redirect('posttweet:loggedin')
+        else:
+            messages.error(request, "Invalid email or password")
+            return redirect('posttweet:login')
     return render(request, 'login.html')
 
-def logout(request):
-    return render(request, 'index.html')
+def logoutuser(request):
+    logout(request)
+    return render(request, 'posttweet:login')
+
+def loggedin(request):
+    return render(request, 'loggedin.html')
 
 def tweet_list(request):
     Tweet.objects.all().order_by('-created_at')

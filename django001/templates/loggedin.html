@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block title %} Contact {% endblock title %} 
+{% block content %}
+<link href="static/css/loggedin.css" rel="stylesheet">
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center">Welcome {{request.user}}</h1>
+            <p class="text-center">You are logged in as {{ request.user }}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <button type="button" class="btn btn-primary" onclick="window.location.href='{% url 'posttweet:login' %}'">Logout</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
